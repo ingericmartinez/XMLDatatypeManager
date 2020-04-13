@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Tipos de datos registrados</title>
+	<style type="text/css">
+.ui-panelgrid td, .ui-panelgrid tr {
+	border-style: none !important
+}
+
+#form1 {
+	
+	font-size:10px;
+}
+
+
+ .highlight { 
+     
+display:none;
+ } 
+ 
+  .nohighlight { 
+        background: #FFFFE0  !important ;  
+
+ } 
+ 
+
+</style>
+
+<script>
+function testt(oObject) 
+{
+   
+    var id = oObject.id;
+    alert("This object's ID attribute is set to \"" + id + "\"."); 
+}
+
+function colors(oObject) 
+{
+   
+     <!--oObject.style.borderColor="#7EADED";-->
+     oObject.style.backgroundColor="#f0f8ff";  
+  
+}
+
+function nocolors(oObject) 
+{
+    
+   
+     oObject.style.backgroundColor="#FFFFFF"; 
+  
+}
+
+</script>
+</h:head>
+
+<h:body style="background-image: url(fondo.jpg);background-repeat:no-repeat; background-size: cover;">
+
+<p:graphicImage url="telcel2.jpg" />
+
+<p:panel header="ADMINISTRACION DE TIPOS DE DATOS CORPORATIVOS SIMPLES                                                                                        
+                                                                                              
+
+                                                                                              
+
+BIENVENIDO:        EX171221" style="font-size:11px;font-family: Calibri, sans-serif;border-color: red">
+</p:panel>
+
+	<h:form id="form1">
+	
+		<p:menubar  style="font-size:11px;font-family: Calibri, sans-serif;border-color: none">
+<p:submenu label="￭ CREACION DICCIONARIO DE DATOS" style="font-size:12px;font-family: Calibri, sans-serif;border-color: lightblue;width: auto;">
+<p:menuitem value="￭ TIPO CORPORATIVO SIMPLE" action="#{LoginController.corporativos}" style="font-size:12px;font-family: Calibri, sans-serif;width: auto" />
+<p:menuitem value="￭ TIPO CORPORATIVO COMPLEJO" action="#{LoginController.corporativoscomplejos}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ TIPO DEPARTAMENTO SIMPLE" action="#{LoginController.simples}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ TIPO DEPARTAMENTO COMPLEJO" action="#{LoginController.simplescomplejos}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ DICCIONARIO DATOS" url="http://localhost:8080/DiccionarioDatos/Diccionario.xhtml" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ CREACION DE XSD" url="http://localhost:8080/DiccionarioDatos/CrearXSD.xhtml" style="font-size:12px;font-family: Calibri, sans-serif;" />
+</p:submenu>
+<p:submenu label="￭ INFORMACION" style="font-size:12px;font-family: Calibri, sans-serif;" >
+<p:menuitem value="￭ ACERCA DE" url="http://localhost:8080/DiccionarioDatos/Acerca.xhtml" style="font-size:12px;font-family: Calibri, sans-serif;" />
+</p:submenu>
+<p:submenu label=" ￭ SALIR" style="font-size:12px;font-family: Calibri, sans-serif;">
+<p:menuitem value="￭ SALIR" action="#{DatosListController.logout}"  style="font-size:12px;font-family: Calibri, sans-serif;"/>
+</p:submenu>
+</p:menubar>
+
+ <p></p> 
+ 
+		<p:growl id="growl" showDetail="false" sticky="true" life="2000"/>
+		<p:growl id="notif" showDetail="false" sticky="true" rendered="true" life="2000" />
+			
+
+
+
+		
+		<p:fieldset id="addForm" collapsed="true" legend="AÑADIR TIPO DE DATO SIMPLE"
+			toggleable="true" toggleSpeed="500" style="font-size:11px;font-family: Calibri, sans-serif;border-color: gray">
+			<p:ajax event="toggle" />
+			<p:panelGrid columns="2">
+				<label>NOMBRE</label>
+				<p:inputText id="nombre" value="#{DatosListController.data.nombre}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);"  />
+
+					
+<!-- 				<label>CLASIFICACION</label> -->
+<!-- <h:selectOneMenu id="suburbs" value="CLASIFICACION" onchange="loadValue()"> -->
+<!-- <f:selectItems value="#{DatosListController.datos}" /> -->
+<!-- </h:selectOneMenu> -->
+
+				
+
+				<label>TIPO</label>
+				<p:inputText id="tipo" value="#{DatosListController.data.tipo}" style="width:440px;"   onblur="nocolors(this);" onfocus="colors(this);" />
+<!-- 				<p:inputText id="model" value="SIMPLE" style="width:440px;background-color:lightgray;" readonly="true" type="hidden"/> -->
+				
+				<label>SUBTIPO</label>
+				<p:inputText id="subtipo"
+					value="#{DatosListController.data.subtipo}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" />
+<!-- 				<label>ELEMENTOS</label> -->
+				<p:inputText id="elementos" value="#{DatosListController.data.elementos}" style="width:440px;" type="hidden"/>				
+				<label>PATRON</label> 
+				<p:inputText id="patron"
+					value="#{DatosListController.data.patron}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" />
+					<label>REQUERIDO</label>
+				<p:inputText id="requerido"
+					value="#{DatosListController.data.requerido}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);"  />
+				<label>TAMAÑO MIN</label>
+				<p:inputText id="longmin" value="#{DatosListController.data.longmin}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" >
+<!-- 					<f:validator validatorId="yearValidator" /> -->
+				</p:inputText>
+				<label>TAMAÑO MAX</label>
+				<p:inputText id="longmax" value="#{DatosListController.data.longmax}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" >
+					<f:validator validatorId="yearValidator" />
+				</p:inputText>
+				<label>FIJO</label>
+				<p:inputText id="fijo"
+					value="#{DatosListController.data.fijo}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" />
+					
+			   <label>DOCUMENTACION</label>
+				<p:inputText id="documentacion"
+				value="#{DatosListController.data.documentacion}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" />
+				
+					<label>ESQUEMA</label>
+					<p:inputText id="esquema"
+				value="#{DatosListController.data.esquema}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" />
+<!-- 				<p:inputText id="categoria" -->
+<!-- 				value="NEGOCIO" style="width:440px;" type="hidden" /> -->
+				
+					<label>NAMESPACE</label>
+<!-- 				<p:inputText id="namespace" -->
+<!-- 				value="#{DatosListController.data.namespace}" style="width:440px;"  /> -->
+				<p:inputText id="namespace"
+				value="http://kitcargofactura.taf.dte.gsce.sds.di.telcel.com.mx" style="width:440px;" readonly="true"  onblur="nocolors(this);" onfocus="colors(this);" />
+				
+				<label>VERSION</label>
+				<p:inputText id="version"
+				value="#{DatosListController.data.version}" style="width:440px;"  onblur="nocolors(this);" onfocus="colors(this);" />
+					
+				<p:commandButton id="addButton"
+					action="#{DatosListController.addDato}"
+					update="form1 :dataTable:datosdd" value="AÑADIR DATO">
+				</p:commandButton>
+			</p:panelGrid>
+						
+			
+		</p:fieldset>
+		
+		
+		<p:tooltip for="nombre" value="NOMBRE DEL TIPO DE DATOS"/>
+		<p:tooltip for="tipo" value="TIPO DE DATO SIMPLE O COMPLEJO, ej. String, Complex,Entero,etc."/>
+		<p:tooltip for="elementos" value="SOLO SI EL TIPO DE DATO ES COMPLEJO"/>
+		<p:tooltip for="patron" value="PATRON (EXPRESION REGULAR) QUE TENDRA EL ELEMENTO"/>
+		<p:tooltip for="requerido" value="ESPECIFICA SI EL TIPO DE DATO ES REQUERIDO"/>
+		<p:tooltip for="longmin" value="ESPECIFICA EL TAMAÑO MINIMO DEL ELEMENTO"/>
+		<p:tooltip for="longmax" value="ESPECIFICA EL TAMAÑO MAXIMO DEL ELEMENTO"/>
+		<p:tooltip for="fijo" value="ESPECIFICA SI EL ELEMENTO TIENE VALOR FIJO"/>
+		<p:tooltip for="documentacion" value="COMENTARIO QUE SE AGREGA AL TIPO DE DATO"/>
+		
+		
+		<br></br>
+		
+		
+			<p:fieldset id="addForm2" collapsed="false" legend="VER DETALLE DATOS USUARIO LDAP"
+			toggleable="true" toggleSpeed="500" style="font-size:11px;font-family: Calibri, sans-serif;border-color: gray">
+			<p:ajax event="toggle" />
+			<p:panelGrid columns="2">
+				<label>USUARIO</label>
+				<p:inputText id="make1" value="ERIC ABRAHAM MARTINEZ VIVEROS" style="width:440px;" readonly="true" onmouseout="nocolors(this);" onmouseover="colors(this);" />
+				<label>NOEMPLEADO</label>
+				<p:inputText id="make2" value="EX171221" style="width:440px;" readonly="true" onmouseout="nocolors(this);" onmouseover="colors(this);"  />
+				<label>ROLES</label>
+				<p:inputText id="model3" value="DARTE,DESARROLLADOR" style="width:440px;" readonly="true" onmouseout="nocolors(this);" onmouseover="colors(this);" />
+				<label>DEPARTAMENTO</label>
+				<p:inputText id="elementos3" value="DARTE" style="width:440px;" readonly="true" onmouseout="nocolors(this);" onmouseover="colors(this);" />
+				<label>NAMESPACE</label>
+				<p:inputText id="elementos4" value="http://www.amx.com.mx/mexico/telcel/di/sds/[gsa]/[darte]/[Servicio Negocio]"  style="width:440px;" readonly="true" onmouseout="nocolors(this);" onmouseover="colors(this);" />
+				
+			</p:panelGrid>
+			<p:focus for="make1"/>
+
+		</p:fieldset>		
+	</h:form>
+	
+	<h:form id="dataTable" style="font-size:11px;font-family: Calibri, sans-serif;border-color: lightblue">
+		<p:dataTable id="datosdd" var="data" value="#{DatosListController.datos}"
+			scrollable="true" scrollHeight="100%" editable="true" resizableColumns="true"
+			style="margin-bottom:20px;border-color: blue;" rows="10" paginator="true"   widgetVar="dataTable" rowStyleClass="#{data.tipo ne 'Simple'  ? 'highlight' : 'nohighlight'}">
+		<!-- tableStyle="width:auto" y scroll horizontal -->
+			<p:ajax event="rowEdit" listener="${DatosListController.onRowEdit}"
+				update="datosdd" />
+		
+			<f:facet name="header"  tableStyle="width:auto">  
+          TIPOS DE DATOS CORPORATIVOS
+       </f:facet>
+       
+      
+         <p:column style="width:16px">
+            <p:rowToggler />
+        </p:column>
+        
+			<p:column headerText="NOMBRE">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.nombre}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.nombre}"  />
+					</f:facet>					
+				</p:cellEditor>
+			</p:column>
+			<p:column headerText="TIPO">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.tipo}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.tipo}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="SUBTIPO">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.subtipo}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.subtipo}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+
+			<p:column headerText="ELEMENTOS">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.elementos}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.elementos}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+		
+		
+								
+			<p:column headerText="PATRON">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.patron}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.patron}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			<p:column headerText="REQUERIDO">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.requerido}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.requerido}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+			<p:column headerText="TAMAÑO MIN" >
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText style="center" value="${data.longmin}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText  value="${data.longmin}" >
+							<f:validator validatorId="yearValidator" />
+						</p:inputText>
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+				<p:column headerText="TAMAÑO MAX" >
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText style="center" value="${data.longmax}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText  value="${data.longmax}" >
+							<f:validator validatorId="yearValidator" />
+						</p:inputText>
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+				<p:column headerText="FIJO">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.fijo}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.fijo}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+				<p:column headerText="DOCUMENTACION">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.documentacion}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.documentacion}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+			<p:column headerText="ESQUEMA">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.esquema}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.esquema}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+			<p:column headerText="NAMESPACE">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.namespace}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.namespace}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+			<p:column headerText="VERSION">
+				<p:cellEditor>
+					<f:facet name="output">
+						<h:outputText value="${data.version}" />
+					</f:facet>
+					<f:facet name="input">
+						<p:inputText value="${data.version}"  />
+					</f:facet>
+				</p:cellEditor>
+			</p:column>
+			
+			
+			
+			<p:column headerText="EDITAR" >
+				<p:rowEditor />
+			</p:column>
+			<p:column headerText="ELIMINAR" >
+				<p:commandButton style="center" action="#{DatosListController.deleteDato(data)}"
+					update="datosdd" icon="ui-icon-close" />
+			</p:column>
+			
+			
+<!-- 			  <p:column style="width:32px;text-align: center"> -->
+<!--              <p:commandButton update=":dataTable:dataDetail" oncomplete="PF('ddialog').show()" icon="ui-icon-search" title="View"> -->
+<!--                 <f:setPropertyActionListener value="#{data}" target="#{DatosListController.datos}" /> -->
+<!--             </p:commandButton> -->
+<!--         </p:column> -->
+        
+        
+			
+		
+			
+			 <p:rowExpansion>
+            <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                <f:facet name="header">
+                   COMPOSICION DEL TIPO COMPLEJO
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{data.id}" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="#{data.longmin}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{data.id}" />
+ 
+                <h:outputText value="Price" />
+                <h:outputText value="$#{data.longmin}" />
+            </p:panelGrid>
+        </p:rowExpansion>
+			
+			
+		</p:dataTable>
+		
+		
+		 <p:dialog header="Data Info" widgetVar="ddialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="dataDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" columnClasses="label,value">
+                <f:facet name="header">
+                    header
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{DatosListController.data.nombre}" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="#{DatosListController.data.nombre}" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="#{DatosListController.data.nombre}" />
+ 
+                <h:outputText value="Price" />
+                <h:outputText value="$#{DatosListController.data.nombre}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+ 
+ 
+ 
+	</h:form>
+	<h:form>
+		<p:commandButton value="SALIR" action="#{DatosListController.logout}" />
+		<p:commandButton value="VERSION" type="button" onclick="PF('dlg2').show();" />
+		<p:dialog header="INFORMACION" widgetVar="dlg2" modal="true" height="100">
+    <h:outputText value="Version BETA AGO 2017 " />
+</p:dialog> 
+	</h:form>
+	</h:body>
+</html>

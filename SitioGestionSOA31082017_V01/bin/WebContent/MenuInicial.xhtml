@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Tipos de datos registrados</title>
+	<style type="text/css">
+.ui-panelgrid td, .ui-panelgrid tr {
+	border-style: none !important
+}
+
+#cars1 {
+	
+	font-size:10px;
+}
+
+
+#form {
+	width: 400px;
+	height: 300px;
+	position: absolute; /*it can be fixed too*/
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	max-width: 100%;
+	max-height: 100%;
+	overflow: auto;
+	font-size:10px;
+}
+
+
+</style>
+
+<script>
+
+</script>
+</h:head>
+
+<h:body style="background-image: url(fondo.jpg);background-repeat:no-repeat; background-size: cover;">
+
+<p:graphicImage url="telcel2.jpg" />
+
+<p:panel header="MENU INICIAL                                                                                        
+                                                                                              
+
+                                                                                              
+
+BIENVENIDO:  EX171221" style="font-size:11px;font-family: Calibri, sans-serif;border-color: red">
+</p:panel>
+
+	<h:form id="cars1">
+	
+		<p:menubar>
+<p:submenu label="￭ CREACION DICCIONARIO DE DATOS" style="font-size:12px;font-family: Calibri, sans-serif;border-color: lightblue;">
+<p:menuitem value="￭ TIPO CORPORATIVO SIMPLE" action="#{LoginController.corporativos}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ TIPO CORPORATIVO COMPLEJO" action="#{LoginController.corporativoscomplejos}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ TIPO DEPARTAMENTO SIMPLE" action="#{LoginController.simples}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ TIPO DEPARTAMENTO COMPLEJO" action="#{LoginController.simplescomplejos}" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ DICCIONARIO DATOS" url="http://localhost:8080/DiccionarioDatos/Diccionario.xhtml" style="font-size:12px;font-family: Calibri, sans-serif;" />
+<p:menuitem value="￭ CREACION DE XSD" url="http://localhost:8080/DiccionarioDatos/CrearXSD.xhtml" style="font-size:12px;font-family: Calibri, sans-serif;" />
+</p:submenu>
+<p:submenu label="￭ INFORMACION" style="font-size:12px;font-family: Calibri, sans-serif;" >
+<p:menuitem value="￭ ACERCA DE" url="http://localhost:8080/DiccionarioDatos/Acerca.xhtml" style="font-size:12px;font-family: Calibri, sans-serif;" />
+</p:submenu>
+<p:submenu label=" ￭ SALIR" style="font-size:12px;font-family: Calibri, sans-serif;">
+<p:menuitem value="￭ SALIR" action="#{DatosListController.logout}"  style="font-size:12px;font-family: Calibri, sans-serif;"/>
+</p:submenu>
+</p:menubar>
+
+ <p></p> 
+ 
+		<p:growl id="growl" showDetail="false" sticky="true" />
+		<p:growl id="notif" showDetail="false" sticky="true" rendered="true" />
+
+
+ <p></p>
+<!-- 	<p:fieldset id="addForm" legend="BIENVENIDO " style="font-size:11px;font-family: Calibri, sans-serif;border-color: blue"> -->
+<!-- 			<p:growl id="growli" sticky="true" showDetail="true" life="3000" /> -->
+			
+<!-- 			<label>POR FAVOR SELECCIONE UNA OPCION DEL MENU SUPERIOR</label> -->
+			
+<!-- 		</p:fieldset> -->
+
+
+		
+	</h:form>	
+	</h:body>
+</html>
