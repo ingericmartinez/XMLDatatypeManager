@@ -23,7 +23,7 @@
 		<hibernate.version>4.3.5.Final</hibernate.version>
 
 		<!-- JSF Version -->
-		<jsf.version>2.2.10</jsf.version>
+		<jsf.version>2.2.20</jsf.version>
 
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
